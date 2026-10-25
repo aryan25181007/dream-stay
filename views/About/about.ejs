@@ -1,0 +1,448 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap");
+
+    .ds-about {
+        --ds-ink: #1d2a2f;
+        --ds-muted: #5d6b70;
+        --ds-line: #e4e7e5;
+        --ds-sand: #f6f3ee;
+        --ds-accent: #00A6A6;
+        --ds-accent-dark: #0B3954;
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--ds-ink);
+        line-height: 1.7;
+    }
+
+    .ds-about h1,
+    .ds-about h2,
+    .ds-about h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+    }
+
+    .ds-eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ds-accent);
+        margin-bottom: 1rem;
+    }
+
+    /* Hero */
+    .ds-hero {
+        position: relative;
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 1rem 0 5rem;
+        background:
+            linear-gradient(90deg, rgba(16, 24, 28, 0.82) 0%, rgba(16, 24, 28, 0.35) 70%, rgba(16, 24, 28, 0.15) 100%),
+            url("https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1800&q=80") center / cover no-repeat;
+    }
+
+    .ds-hero-inner {
+        padding: 4rem clamp(1.5rem, 6vw, 4.5rem);
+        max-width: 680px;
+        color: #fff;
+    }
+
+    .ds-hero .ds-eyebrow {
+        color: #ffd5d8;
+    }
+
+    .ds-hero h1 {
+        font-size: clamp(2.3rem, 5vw, 3.6rem);
+        margin-bottom: 1.25rem;
+    }
+
+    .ds-hero p {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.86);
+        max-width: 520px;
+        margin-bottom: 2rem;
+    }
+
+    /* Buttons */
+    .ds-btn {
+        display: inline-block;
+        padding: 0.85rem 1.75rem;
+        border-radius: 999px;
+        background: var(--ds-accent);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .ds-btn:hover {
+        background: var(--ds-accent-dark);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    .ds-btn-light {
+        background: #fff;
+        color: var(--ds-ink);
+    }
+
+    .ds-btn-light:hover {
+        background: var(--ds-sand);
+        color: var(--ds-ink);
+    }
+
+    /* Story */
+    .ds-story {
+        margin-bottom: 6rem;
+    }
+
+    .ds-story h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        margin-bottom: 1.25rem;
+    }
+
+    .ds-story p {
+        color: var(--ds-muted);
+    }
+
+    .ds-photo {
+        position: relative;
+        padding: 0 0 1.5rem 1.5rem;
+    }
+
+    .ds-photo::before {
+        content: "";
+        position: absolute;
+        inset: 1.5rem 1.5rem 0 0;
+        border-radius: 18px;
+        background: var(--ds-sand);
+    }
+
+    .ds-photo img {
+        position: relative;
+        width: 100%;
+        height: 440px;
+        object-fit: cover;
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(29, 42, 47, 0.14);
+    }
+
+    .ds-text-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+        font-weight: 600;
+        color: var(--ds-ink);
+        text-decoration: none;
+        border-bottom: 2px solid var(--ds-accent);
+        padding-bottom: 2px;
+    }
+
+    .ds-text-link:hover {
+        color: var(--ds-accent);
+    }
+
+    /* Values */
+    .ds-values {
+        background: var(--ds-sand);
+        border-radius: 20px;
+        padding: 5rem clamp(1.5rem, 5vw, 4rem);
+        margin-bottom: 6rem;
+    }
+
+    .ds-section-head {
+        max-width: 620px;
+        margin: 0 auto 3rem;
+        text-align: center;
+    }
+
+    .ds-section-head h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+
+    .ds-section-head p {
+        color: var(--ds-muted);
+        margin: 0;
+    }
+
+    .ds-card {
+        height: 100%;
+        background: #fff;
+        border: 1px solid var(--ds-line);
+        border-radius: 16px;
+        padding: 2rem 1.75rem;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .ds-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 30px rgba(29, 42, 47, 0.08);
+    }
+
+    .ds-icon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: #fff1f2;
+        color: var(--ds-accent);
+        margin-bottom: 1.25rem;
+    }
+
+    .ds-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .ds-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .ds-card p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--ds-muted);
+    }
+
+    /* Steps */
+    .ds-steps {
+        margin-bottom: 6rem;
+    }
+
+    .ds-step {
+        padding-top: 1.5rem;
+        border-top: 2px solid var(--ds-ink);
+    }
+
+    .ds-step-no {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 0.95rem;
+        color: var(--ds-accent);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .ds-step h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .ds-step p {
+        margin: 0;
+        color: var(--ds-muted);
+        font-size: 0.95rem;
+    }
+
+    /* CTA */
+    .ds-cta {
+        background: var(--ds-ink);
+        color: #fff;
+        border-radius: 20px;
+        padding: 4.5rem 1.5rem;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .ds-cta h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        margin-bottom: 1rem;
+    }
+
+    .ds-cta p {
+        max-width: 500px;
+        margin: 0 auto 2rem;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    @media (max-width: 767px) {
+        .ds-hero {
+            min-height: 440px;
+        }
+
+        .ds-photo img {
+            height: 320px;
+        }
+
+        .ds-values {
+            padding: 3.5rem 1.25rem;
+        }
+    }
+</style>
+
+<div class="ds-about container">
+
+    <!-- Hero -->
+    <section class="ds-hero">
+        <div class="ds-hero-inner">
+            <span class="ds-eyebrow">About DreamStay</span>
+            <h1>Every stay tells a story.</h1>
+            <p>
+                We help travellers find places that feel less like a booking
+                and more like a homecoming, from quiet cottages to
+                sunlit villas.
+            </p>
+            <a href="/listings" class="ds-btn">Explore listings</a>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section class="ds-story">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="ds-photo">
+                    <img
+                        src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=80"
+                        alt="Modern holiday villa with a pool at dusk"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <span class="ds-eyebrow">Who we are</span>
+                <h2>More than just a place to stay</h2>
+                <p>
+                    A good trip starts with a good base. Whether it is a
+                    slow weekend away, a family holiday, or a spontaneous
+                    adventure, the right place sets the tone for everything
+                    that follows.
+                </p>
+                <p>
+                    DreamStay exists to make finding that place simple.
+                    Browse real properties, compare them with confidence,
+                    and book without the guesswork.
+                </p>
+                <a href="/listings" class="ds-text-link">
+                    Discover your next stay
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="ds-values">
+        <div class="ds-section-head">
+            <span class="ds-eyebrow">What we stand for</span>
+            <h2>Making every journey feel like home</h2>
+            <p>
+                Three simple ideas guide how we build DreamStay and how we
+                look after the people who use it.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <article class="ds-card">
+                    <div class="ds-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 10.5 12 3l9 7.5"/>
+                            <path d="M5 9.5V20h14V9.5"/>
+                            <path d="M10 20v-5h4v5"/>
+                        </svg>
+                    </div>
+                    <h3>Distinctive stays</h3>
+                    <p>
+                        Properties with character, chosen for comfort,
+                        location and the details that make a trip feel
+                        special.
+                    </p>
+                </article>
+            </div>
+            <div class="col-md-4">
+                <article class="ds-card">
+                    <div class="ds-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 20.5s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7.6a4.5 4.5 0 0 1 7.5 2.9c0 5.4-7.5 10-7.5 10Z"/>
+                        </svg>
+                    </div>
+                    <h3>Guests come first</h3>
+                    <p>
+                        Clear information, honest listings and a booking
+                        flow that respects your time from search to
+                        check-in.
+                    </p>
+                </article>
+            </div>
+            <div class="col-md-4">
+                <article class="ds-card">
+                    <div class="ds-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="5" width="18" height="15" rx="2"/>
+                            <circle cx="12" cy="12.5" r="3.5"/>
+                            <path d="M8 5l1.5-2h5L16 5"/>
+                        </svg>
+                    </div>
+                    <h3>Memories that last</h3>
+                    <p>
+                        We care about what happens after you arrive: the
+                        mornings, the meals and the moments you take home.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="ds-steps">
+        <div class="ds-section-head">
+            <span class="ds-eyebrow">How it works</span>
+            <h2>From idea to check-in in three steps</h2>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-4">
+                <div class="ds-step">
+                    <div class="ds-step-no">01</div>
+                    <h3>Browse</h3>
+                    <p>
+                        Explore listings by destination and style, with
+                        photos and details laid out clearly.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ds-step">
+                    <div class="ds-step-no">02</div>
+                    <h3>Choose</h3>
+                    <p>
+                        Read what other travellers say and pick the stay
+                        that fits your plans and budget.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ds-step">
+                    <div class="ds-step-no">03</div>
+                    <h3>Enjoy</h3>
+                    <p>
+                        Pack your bags and settle in. The rest of the trip
+                        is yours to write.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="ds-cta">
+        <h2>Your next adventure starts here</h2>
+        <p>
+            Find a place you will love and turn your next trip into
+            something worth remembering.
+        </p>
+        <a href="/listings" class="ds-btn ds-btn-light">Explore our properties</a>
+    </section>
+
+</div>

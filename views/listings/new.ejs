@@ -1,0 +1,59 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <h2 class="addnewheading">Add your listing</h3>
+            <form action="/listings/new" method="post">
+                <div class="form-field">
+                    <label for="fieldText" class="form-label">Name of the property</label>
+
+                    <input name="title" type="text" class="form-control" id="fieldText" placeholder="Hotel Taj">
+                    <div class="form-text">
+                        Add the name your property
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="fieldTextarea" class="form-label">Description</label>
+
+                    <textarea name="description" class="form-control" id="fieldTextarea" rows="3"></textarea>
+                    <div class="form-text">
+                        Be sure to add a catchy description of your property.
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="fieldText" class="form-label">Image</label>
+
+                    <input name="image" type="text" class="form-control" id="fieldText"
+                        placeholder="https://hoteltajimg.com">
+                    <div class="form-text">
+                        Put an attractive image!(url only)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-field col-4">
+                        <label for="fieldText" class="form-label">Price</label>
+
+                        <input name="price" type="number" class="form-control" id="fieldText" placeholder="₹8,500">
+                        <div class="form-text">
+                            Enter the price of the property / night.
+                        </div>
+                    </div>
+                    <div class="form-field col-7">
+                        <label for="fieldText" class="form-label">location</label>
+
+                        <input name="location" type="text" class="form-control" id="fieldText" placeholder="Mumbai">
+                        <div class="form-text">
+                            Enter the city of your property.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="fieldText" class="form-label">Country</label>
+
+                    <input name="country" type="text" class="form-control" id="fieldText" placeholder="India">
+                    <div class="form-text">
+                        Enter the Country.
+                    </div>
+                </div>
+                <button type="submit" href="/listings" class="btn-outline theme-inverse addbut">Add Listing</button>
+            </form>
+    </body>
