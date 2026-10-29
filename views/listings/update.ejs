@@ -1,11 +1,15 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-    <h2 class="addnewheading">Update your listing</h3>
-    <form action="/listings/<%= listing._id %>/edit?_method=PATCH" method="post">
-         <div class="form-field">
+
+    <body>
+        <h2 class="addnewheading">Update your listing</h3>
+            <form action="/listings/<%= listing._id %>/edit?_method=PATCH" method="post" data-bs-validate novalidate>
+                <div class="form-field">
                     <label for="fieldText" class="form-label">Name of the property</label>
 
-                    <input name="title" type="text" class="form-control" id="fieldText" value="<%= listing.title %>">
+                    <input name="title" type="text" class="form-control" id="fieldText" value="<%= listing.title %>"
+                        required>
+                    <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter the property name
+                    </div>
                     <div class="form-text">
                         Edit the name your property
                     </div>
@@ -13,7 +17,10 @@
                 <div class="form-field">
                     <label for="fieldTextarea" class="form-label">Description</label>
 
-                    <textarea name="description" class="form-control" id="fieldTextarea" rows="3"><%= listing.description %></textarea>
+                    <textarea name="description" class="form-control" id="fieldTextarea" rows="3"
+                        required><%= listing.description %></textarea>
+                    <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter the description
+                    </div>
                     <div class="form-text">
                         Update description
                     </div>
@@ -27,32 +34,118 @@
                         Edit your image
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-field col-4">
-                        <label for="fieldText" class="form-label">Price</label>
+                <!-- Price -->
+                <!-- Price and Category -->
+<div class="row">
 
-                        <input name="price" type="number" class="form-control" id="fieldText" value="<%= listing.price %>">
-                        <div class="form-text">
-                            Update the price of the property / night.
-                        </div>
-                    </div>
-                    <div class="form-field col-7">
-                        <label for="fieldText" class="form-label">location</label>
+    <!-- Price -->
+    <div class="col-5 price">
+        <label for="price" class="form-label">Price / night</label>
 
-                        <input name="location" type="text" class="form-control" id="fieldText" value="<%= listing.location %>">
-                        <div class="form-text">
-                            Update the city of your property.
-                        </div>
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label for="fieldText" class="form-label">Country</label>
+        <div class="input-group">
+            <span class="input-group-text">₹</span>
 
-                    <input name="country" type="text" class="form-control" id="fieldText" value="<%= listing.country %>">
-                    <div class="form-text">
-                        Update the Country.
-                    </div>
-                </div>
+            <input
+                name="price"
+                type="number"
+                class="form-control"
+                id="price"
+                value="<%= listing.price %>"
+                required
+            >
+        </div>
+
+        <div class="form-text">
+            Enter the price per night.
+        </div>
+    </div>
+
+    <!-- Category -->
+    <div class="col-7 category">
+        <label for="category" class="form-label">Property Category</label>
+
+        <select
+            name="category" class="form-control" id="sizesSelectDefault"
+            required
+        >
+            <option value="Apartment"
+                <%= listing.category === "Apartment" ? "selected" : "" %>>
+                Apartment
+            </option>
+
+            <option value="Villa"
+                <%= listing.category === "Villa" ? "selected" : "" %>>
+                Villa
+            </option>
+
+            <option value="Cabin"
+                <%= listing.category === "Cabin" ? "selected" : "" %>>
+                Cabin
+            </option>
+
+            <option value="Hotel"
+                <%= listing.category === "Hotel" ? "selected" : "" %>>
+                Hotel
+            </option>
+
+            <option value="Dormitory"
+                <%= listing.category === "Dormitory" ? "selected" : "" %>>
+                Dormitory
+            </option>
+        </select>
+
+        <div class="form-text">
+            Select your property type.
+        </div>
+    </div>
+
+</div>
+                <!-- Location and Country -->
+<div class="row city">
+
+    <div class="col-7 form-field">
+        <label for="location" class="form-label">Location</label>
+
+        <input
+            name="location"
+            type="text"
+            class="form-control"
+            id="location"
+            value="<%= listing.location %>"
+            required
+        >
+
+        <div class="invalid-feedback">
+            Please enter the location.
+        </div>
+
+        <div class="form-text">
+            Enter the city of your property.
+        </div>
+    </div>
+
+    <div class="col-5 form-field">
+        <label for="country" class="form-label">Country</label>
+
+        <input
+            name="country"
+            type="text"
+            class="form-control"
+            id="country"
+            value="<%= listing.country %>"
+            required
+        >
+
+        <div class="invalid-feedback">
+            Please enter the country.
+        </div>
+
+        <div class="form-text">
+            Enter the country.
+        </div>
+    </div>
+
+</div>
                 <button type="submit" href="/listings" class="btn-outline theme-inverse addbut">Update Listing</button>
-    </form>
-</body>
+            </form>
+    </body>

@@ -10,16 +10,16 @@ const listSchema = new Schema({
     description: {
         type: String,
     },
-    image: {
-        filename: {
-            type: String,
-            default: "listingimage",
-        },
-        url: {
-            type: String,
-            default: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b",
-        },
+ image: {
+    filename: {
+        type: String,
+        default: "listingimage"
     },
+    url: {
+        type: String,
+        default: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b"
+    }
+},
     price: {
         type: Number,
     },
@@ -27,6 +27,9 @@ const listSchema = new Schema({
         type: String,
     },
     country: {
+        type: String,
+    },
+    category: {
         type: String,
     }
 

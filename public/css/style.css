@@ -146,6 +146,8 @@ color: #00A6A6;
     margin-bottom: 20px;
     box-shadow: 0 4px 12px rgba(11, 57, 84, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     display: flex;
+    flex-direction: column;
 }
 
 /* Card Hover */
@@ -164,7 +166,19 @@ color: #00A6A6;
 
 /* Card Content */
 .card-body {
+    display: flex;
+
+    flex-direction: column;
+
+    flex-grow: 1;
     padding: 20px;
+}
+.card-body .btn-solid {
+
+    align-self: flex-start;
+    
+    margin-top: auto;
+
 }
 
 /* Listing Title */
@@ -274,7 +288,7 @@ color: #00A6A6;
    background-color:#FDFBFB;
 }
 .showcard{
-   height: 850px;
+   height: 900px;
    width:700px;
    margin-left:auto;
    margin-right:auto;
@@ -310,4 +324,490 @@ margin-bottom: 25px;
     height: 250px;
     object-fit: cover;
 }
+
+}
+.input-group-text {
+
+    background-color: #F7F7F2;
+
+    color: hsl(195, 61%, 10%);
+    margin-top:10px;
+    font-size: 16px;
+
+    padding: 8px 14px;
+
+}
+
+/* Error Page Card */
+.card.theme-inverse {
+    position: relative;
+    width: 90%;
+    max-width: 850px;
+    margin: 60px auto;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color:#F7F7F2;
+    box-shadow: 0 10px 30px rgba(11, 57, 84, 0.18);
+}
+
+/* Background Image */
+.card.theme-inverse .card-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.35;
+}
+
+/* Overlay */
+.card.theme-inverse .card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(
+        135deg,
+        rgba(11, 57, 84, 0.75),
+        rgba(0, 166, 166, 0.25)
+    );
+    color: #F7F7F2;
+}
+
+/* Error Status Code */
+.card.theme-inverse .card-title {
+    font-size: 90px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+/* Error Message */
+.card.theme-inverse .card-text {
+    font-size: 22px;
+    font-weight: 500;
+    color: #F7F7F2;
+    margin-bottom: 15px;
+}
+
+/* Small Text */
+.card.theme-inverse .card-text small {
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    .card.theme-inverse {
+        width: 95%;
+        margin: 30px auto;
+        border-radius: 14px;
+    }
+
+    .card.theme-inverse .card-img {
+        height: 300px;
+    }
+
+    .card.theme-inverse .card-title {
+        font-size: 60px;
+    }
+
+    .card.theme-inverse .card-text {
+        font-size: 18px;
+    }
+}
+.price{
+    margin-left:20px;
+}
+.category{
+    margin-left:5rem;
+}
+.city{
+    margin-left:-3.2rem;
+}
+/* =========================
+ADD NEW LISTING PAGE
+(works with new.ejs, Bootstrap 5)
+========================= */
+
+/* Heading */
+.addnewheading {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #0B3954;
+    font-weight: 700;
+}
+
+/* Form wrapper */
+.needs-validation {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+/* Each field block */
+.form-field {
+    margin: 20px;
+}
+
+/* Labels */
+.form-label {
+    color: #0B3954;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+
+/* Inputs, textarea, select */
+.form-control {
+    background-color: #E5E7EB;
+    color: #000000;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-top: 0;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: #9CA3AF;
+}
+
+.form-control:focus {
+    background-color: #FFFFFF;
+    color: #0B3954;
+    outline: none;
+    border-color: #00A6A6;
+    box-shadow: none;
+}
+
+/* Helper text under fields */
+.form-text {
+    color: #6B7280;
+    font-size: 0.85rem;
+}
+
+/* Validation messages */
+.invalid-feedback {
+    color: #D85B3D;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+    border-color: #D85B3D;
+}
+
+.was-validated .form-control:valid {
+    border-color: #087E8B;
+}
+
+/* Price input group (₹ symbol) */
+.input-group-text {
+    background-color: #F7F7F2;
+    color: #0B3954;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px 0 0 8px;
+    margin-top: 0;
+    font-size: 16px;
+    padding: 8px 14px;
+}
+
+.input-group .form-control {
+    border-radius: 0 8px 8px 0;
+}
+
+/* Rows (price/category and location/country) */
+.needs-validation .row {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.needs-validation .row .form-field {
+    margin: 0 0 20px 0;
+}
+
+/* Price + Category: no more margin hacks */
+.price,
+.category {
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+/* Location + Country row */
+.city {
+    margin-left: 0.5rem;
+}
+
+.col-7 {
+    margin-left: 0;
+}
+
+/* Submit button */
+.addbut {
+    display: block;
+    margin: 2rem 20px;
+    padding: 0.6rem 2rem;
+    color: #0B3954;
+    border: 2px solid #0B3954;
+    border-radius: 8px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: color 0.3s ease, border-color 0.3s ease,
+                background-color 0.3s ease, transform 0.3s ease;
+}
+
+.addbut:hover {
+    color: #FFFFFF;
+    background-color: #00A6A6;
+    border-color: #00A6A6;
+    transform: translateY(-1.5px);
+}
+
+/* Mobile: stack columns */
+@media (max-width: 768px) {
+    .price,
+    .category,
+    .col-7,
+    .col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .form-field {
+        margin: 15px;
+    }
+
+    .addbut {
+        margin: 1.5rem 15px;
+    }
+}
+
+/* Price and Category layout */
+.price,
+.category {
+    margin-top: 15px;
+    padding: 0 12px;
+}
+
+.price {
+    width: 35%;
+}
+
+.category {
+    width: 55%;
+}
+
+/* Location and Country */
+.city {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+
+.city .form-field {
+    padding: 0 12px;
+}
+
+/* Form spacing */
+.form-field {
+    margin-bottom: 12px;
+}
+
+/* Submit button */
+.addbut {
+    width: 100%;
+    margin-top: 25px;
+}
+/* Price and Category */
+.price,
+.category {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/* Location and Country */
+.city {
+    margin-top: 15px;
+}
+
+.city .form-field {
+    margin-bottom: 15px;
+}
+
+/* Submit Button */
+.addbut {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Mobile layout */
+@media (max-width: 767px) {
+    .price,
+    .category {
+        width: 100%;
+    }
+
+    .city .form-field {
+        width: 100%;
+    }
+}
+/* =========================
+LISTING FORM STYLES
+Works for BOTH the "Add" and "Update" pages
+(targets any form with data-bs-validate, Bootstrap 5)
+========================= */
+
+/* Heading */
+.addnewheading {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #0B3954;
+    font-weight: 700;
+}
+
+/* Form wrapper */
+form[data-bs-validate] {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+/* Each field block */
+form[data-bs-validate] .form-field {
+    margin: 20px;
+}
+
+/* Labels */
+.form-label {
+    color: #0B3954;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 0.4rem;
+}
+
+/* Inputs, textarea, select */
+.form-control {
+    background-color: #E5E7EB;
+    color: #000000;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-top: 0;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: #9CA3AF;
+}
+
+.form-control:focus {
+    background-color: #FFFFFF;
+    color: #0B3954;
+    outline: none;
+    border-color: #00A6A6;
+    box-shadow: none;
+}
+
+/* Helper text */
+.form-text {
+    color: #6B7280;
+    font-size: 0.85rem;
+}
+
+/* Validation */
+.invalid-feedback {
+    color: #D85B3D;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+    border-color: #D85B3D;
+}
+
+.was-validated .form-control:valid {
+    border-color: #087E8B;
+}
+
+/* Price input group (₹) */
+.input-group-text {
+    background-color: #F7F7F2;
+    color: #0B3954;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px 0 0 8px;
+    margin-top: 0;
+    font-size: 16px;
+    padding: 8px 14px;
+}
+
+.input-group .form-control {
+    border-radius: 0 8px 8px 0;
+}
+
+/* Rows: price + category, location + country */
+form[data-bs-validate] .row {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+form[data-bs-validate] .row .form-field {
+    margin: 0 0 20px 0;
+}
+
+/* Remove old margin hacks */
+.price,
+.category,
+.city,
+.col-7 {
+    margin-left: 0;
+}
+
+.price,
+.category {
+    margin-bottom: 20px;
+}
+
+/* Submit button */
+.addbut {
+    display: block;
+    margin: 2rem 20px;
+    padding: 0.6rem 2rem;
+    color: #0B3954;
+    border: 2px solid #0B3954;
+    border-radius: 8px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: color 0.3s ease, border-color 0.3s ease,
+                background-color 0.3s ease, transform 0.3s ease;
+}
+
+.addbut:hover {
+    color: #FFFFFF;
+    background-color: #00A6A6;
+    border-color: #00A6A6;
+    transform: translateY(-1.5px);
+}
+
+.category{
+    margin-left:4.9rem;
+}
+/* Mobile: stack columns */
+@media (max-width: 768px) {
+    .col-7,
+    .col-5 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    form[data-bs-validate] .form-field {
+        margin: 15px;
+    }
+
+    .addbut {
+        margin: 1.5rem 15px;
+    }
+}
+.search{
+    margin-top:12px;
+}
+.searchbtn{
+    margin-top:12px;
 }

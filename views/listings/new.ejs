@@ -2,11 +2,14 @@
 
     <body>
         <h2 class="addnewheading">Add your listing</h3>
-            <form action="/listings/new" method="post">
+            <form class="needs-validation" action="/listings/new" method="post" data-bs-validate novalidate>
                 <div class="form-field">
                     <label for="fieldText" class="form-label">Name of the property</label>
 
-                    <input name="title" type="text" class="form-control" id="fieldText" placeholder="Hotel Taj">
+                    <input name="title" type="text" class="form-control" id="fieldText" placeholder="Hotel Taj"
+                        required>
+                    <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter the property name
+                    </div>
                     <div class="form-text">
                         Add the name your property
                     </div>
@@ -14,7 +17,9 @@
                 <div class="form-field">
                     <label for="fieldTextarea" class="form-label">Description</label>
 
-                    <textarea name="description" class="form-control" id="fieldTextarea" rows="3"></textarea>
+                    <textarea name="description" class="form-control" id="fieldTextarea" rows="3" required></textarea>
+                    <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter the description
+                    </div>
                     <div class="form-text">
                         Be sure to add a catchy description of your property.
                     </div>
@@ -29,29 +34,63 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-field col-4">
-                        <label for="fieldText" class="form-label">Price</label>
 
-                        <input name="price" type="number" class="form-control" id="fieldText" placeholder="₹8,500">
+                    <!-- Price -->
+                    <div class="col-5 price">
+                        <label for="price" class="form-label">Price / night</label>
+
+                        <div class="input-group ">
+                            <span class="input-group-text">₹</span>
+                            <input name="price" type="number" class="form-control" id="price" placeholder="8500"
+                                required>
+                        </div>
+
                         <div class="form-text">
-                            Enter the price of the property / night.
+                            Enter the price per night.
                         </div>
                     </div>
+
+                    <!-- Category -->
+                    <div class="col-7 category">
+                        <label for="sizesSelectDefault" class="form-label">Default select</label>
+
+                        <select name="category" class="form-control" id="sizesSelectDefault" required>
+                            <option value="" selected disabled>Select category</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Villa">Villa</option>
+                            <option value="Cabin">Cabin</option>
+                            <option value="Hotel">Hotel</option>
+                            <option value="Dormitory">Dormitory</option>
+                        </select>
+                         <div id="validationCustomAddressFeedback" class="invalid-feedback">Please select a valid category</div>
+                        <div class="form-text">
+                            Select your property type.
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row city">
                     <div class="form-field col-7">
                         <label for="fieldText" class="form-label">location</label>
 
-                        <input name="location" type="text" class="form-control" id="fieldText" placeholder="Mumbai">
+                        <input name="location" type="text" class="form-control" id="fieldText" placeholder="Mumbai"
+                            required>
+                        <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter the location
+                            details</div>
                         <div class="form-text">
                             Enter the city of your property.
                         </div>
                     </div>
-                </div>
-                <div class="form-field">
-                    <label for="fieldText" class="form-label">Country</label>
+                    <div class="form-field col-5">
+                        <label for="fieldText" class="form-label">Country</label>
 
-                    <input name="country" type="text" class="form-control" id="fieldText" placeholder="India">
-                    <div class="form-text">
-                        Enter the Country.
+                        <input name="country" type="text" class="form-control" id="fieldText" placeholder="India"
+                            required>
+                        <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter the country
+                        </div>
+                        <div class="form-text">
+                            Enter the Country.
+                        </div>
                     </div>
                 </div>
                 <button type="submit" href="/listings" class="btn-outline theme-inverse addbut">Add Listing</button>
