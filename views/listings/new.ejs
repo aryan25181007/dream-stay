@@ -39,15 +39,27 @@
                     <div class="col-5 price">
                         <label for="price" class="form-label">Price / night</label>
 
-                        <div class="input-group ">
-                            <span class="input-group-text">₹</span>
-                            <input name="price" type="number" class="form-control" id="price" placeholder="8500"
-                                required>
-                        </div>
+     <div class="price-field">
+    <div class="input-group">
+        <span class="input-group-text">₹</span>
 
-                        <div class="form-text">
-                            Enter the price per night.
-                        </div>
+        <input
+            name="price"
+            type="number"
+            class="form-control"
+            id="price"
+            placeholder="8500"
+            required
+        >
+        <div id="validationCustomAddressFeedback" class="invalid-feedback">Please enter a valid price</div>
+    </div>
+
+   
+
+    <div class="form-text">
+        Enter the price per night.
+    </div>
+</div>
                     </div>
 
                     <!-- Category -->
@@ -93,6 +105,6 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" href="/listings" class="btn-outline theme-inverse addbut">Add Listing</button>
+                <button type="submit" href="/listings" class="btn-outline theme-inverse addbutton">Add Listing</button>
             </form>
     </body>

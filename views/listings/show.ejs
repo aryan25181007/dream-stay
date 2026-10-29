@@ -14,12 +14,28 @@
     <li class="list-group-item">Country : <%= listing.country %></li>
   </ul>
 <div class="card-body d-flex flex-row gap-3">
+    <div class="card-body d-flex flex-row gap-3">
+
+    <!-- Update Button -->
+    <div class="card-body d-flex flex-row gap-3">
+
+   <div class="card-body show-actions">
     <form method="get" action="/listings/<%= listing._id %>/edit">
-        <button  class="btn-outline theme-inverse addbut">Update Listing</button>
+        <button type="submit" class="addbut update-btn">
+            <i class="fa-regular fa-pen-to-square"></i> Update Listing
+        </button>
     </form>
+
     <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
-        <button  class="btn-outline theme-inverse addbut">Delete Listing</button>
+        <button type="submit" class="addbut delete-btn">
+            <i class="fa-regular fa-trash-can"></i> Delete Listing
+        </button>
     </form>
+</div>
+
+</div>
+
+</div>
   </div>
 </div>
     
